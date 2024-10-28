@@ -75,3 +75,4 @@ class PhotosController < ApplicationController
       end
     end
 end
+
