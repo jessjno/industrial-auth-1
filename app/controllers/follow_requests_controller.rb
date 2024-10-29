@@ -8,6 +8,7 @@ class FollowRequestsController < ApplicationController
 
   # GET /follow_requests/1 or /follow_requests/1.json
   def show
+    authorize(@user)
   end
 
   # GET /follow_requests/new

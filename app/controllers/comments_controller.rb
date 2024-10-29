@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1 or /comments/1.json
   def show
+    authorize(@comment)
   end
 
   # GET /comments/new
@@ -18,6 +19,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
+    authorize(@comment)
   end
 
   # POST /comments or /comments.json
@@ -70,7 +72,7 @@ class CommentsController < ApplicationController
     end
 
     def is_an_authorized_user
-      @photo = Photo.find(params.fetch(:comment).fetch(photo_id))
+      @photo = Photo.find(params.fetch(:comment).fetch(:photo_id))
       if current_user != @photo.owner && @photo.owner.private? && !current_user.leaders.include?(@photo.owner)
         redirect_back fallback_location: root_url, alert: "Not authorized"
       end
