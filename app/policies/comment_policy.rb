@@ -1,4 +1,4 @@
-class CommentPolicy
+class CommentPolicy < ApplicationPolicy
   attr_reader :user, :comment
 
   def initialize(user, comment)
@@ -19,6 +19,6 @@ class CommentPolicy
   end
 
   def destroy?
-    comment.author_id == user.id
+    user == comment.author
   end
 end
