@@ -11,11 +11,11 @@ class CommentPolicy < ApplicationPolicy
   end
 
   def edit?
-    comment.author_id == user.id
+    user == comment.author
   end
 
   def update?
-    comment.author_id == user.id
+    user == comment.author
   end
 
   def destroy?
