@@ -21,4 +21,8 @@ class CommentPolicy < ApplicationPolicy
   def destroy?
     user == comment.author
   end
+
+  def create? 
+    true
+  end
 end
